@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Oil Viscosity Calculators - Calculate oil viscosity using LBC, Little-Kennedy, Beal, Beggs-Robinson, Glaso, Chew-Connally, and Vazquez-Beggs correlations">
+    <meta name="keywords" content="oil viscosity, PVT properties, LBC correlation, petroleum engineering">
+    <title>Oil Viscosity Calculator - Space Theme</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Cairo:wght@400;600;700&family=Orbitron:wght@400;500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Space Background Elements -->
+    <div class="space-background">
+        <div class="stars-layer-1"></div>
+        <div class="stars-layer-2"></div>
+        <div class="stars-layer-3"></div>
+        <div class="meteors-container">
+            <div class="meteor"></div>
+            <div class="meteor"></div>
+            <div class="meteor"></div>
+            <div class="meteor"></div>
+        </div>
+        <div class="planet planet-1"></div>
+        <div class="planet planet-2"></div>
+        <div class="planet planet-3"></div>
+        <div class="planet planet-4"></div>
+        <div class="galaxy"></div>
+        <div class="ufo-container">
+            <div class="ufo"></div>
+            <div class="ufo-light"></div>
+        </div>
+
+        <!-- Light Theme Elements -->
+        <div class="light-theme-elements">
+            <!-- Animated Clouds -->
+            <div class="cloud cloud-1"></div>
+            <div class="cloud cloud-2"></div>
+            <div class="cloud cloud-3"></div>
+
+            <!-- Flying Birds -->
+            <div class="birds-container">
+                <div class="bird bird-1"></div>
+                <div class="bird bird-2"></div>
+                <div class="bird bird-3"></div>
+            </div>
+
+            <!-- Animated Pump Jack -->
+            <div class="pump-jack">
+                <div class="pump-base"></div>
+                <div class="pump-arm"></div>
+                <div class="pump-head"></div>
+            </div>
+
+            <!-- Sun with Lens Flare -->
+            <div class="sun">
+                <div class="sun-core"></div>
+                <div class="sun-flare"></div>
+                <div class="sun-flare sun-flare-2"></div>
+            </div>
+
+            <!-- Heat Shimmer Effect -->
+            <div class="heat-shimmer"></div>
+        </div>
+    </div>
+
+    <main class="container">
+        <header class="main-header">
+            <div class="settings-bar">
+                <select id="langSelect" class="lang-select" aria-label="Select Language">
+                    <option value="en">English</option>
+                    <option value="fr">Français</option>
+                    <option value="ar">العربية</option>
+                </select>
+                <button id="themeToggle" class="icon-btn" aria-label="Toggle Theme">
+                    <svg class="sun-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="moon-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+            </div>
+            <h1 data-i18n="appTitle">Oil Viscosity Calculators</h1>
+            <p class="subtitle" data-i18n="appSubtitle">PVT Properties - Multiple Correlations</p>
+
+            <div class="tabs-wrapper">
+                <nav class="tabs">
+                    <button class="tab-btn active" data-tab="lbc">LBC</button>
+                    <button class="tab-btn" data-tab="lk">Little-Kennedy</button>
+                    <button class="tab-btn" data-tab="beal">Beal</button>
+                    <button class="tab-btn" data-tab="beggs">Beggs-Robinson</button>
+                    <button class="tab-btn" data-tab="glaso">Glaso</button>
+                    <button class="tab-btn" data-tab="chew">Chew-Connally</button>
+                    <button class="tab-btn" data-tab="vazquez">Vazquez-Beggs</button>
+                </nav>
+            </div>
+        </header>
+
+        <!-- LBC Tab -->
+        <div id="lbcTab" class="tab-content active">
+            <div class="card">
+                <h2>LBC (1964)</h2>
+                <p data-i18n="lbcSubtitle">Lohrenz-Bray-Clark Correlation</p>
+
+                <div class="explanation-section">
+                    <h3 data-i18n="backgroundTitle">Background & Development</h3>
+                    <p data-i18n="lbcBackground">The Lohrenz-Bray-Clark (LBC) correlation was
+                        developed in 1964 by John Lohrenz, Bruce G. Bray, and Charles R. Clark
+                        at Standard Oil Company of California (now Chevron). This correlation
+                        was presented in their landmark paper in the <em>Journal of Petroleum
+                            Technology</em> and has since become one of the most widely used
+                        methods for estimating reservoir fluid viscosity in the petroleum
+                        industry.</p>
+
+                    <h3 data-i18n="howItWorksTitle">How It Works</h3>
+                    <p data-i18n="lbcHowItWorks">The LBC correlation uses a modified corresponding
+                        states principle combined with dimensionless density to predict
+                        viscosity. The method relates viscosity to the reduced density and
+                        molecular weight of the fluid mixture. It performs particularly well for
+                        gas condensate and volatile oil systems at reservoir conditions.</p>
+
+                    <h3 data-i18n="formulaTitle">Correlation Formula</h3>
+                    <p data-i18n="lbcFormulaIntro">The LBC correlation is expressed as:</p>
+                    <div class="formula-box">
+                        <strong>μ = μ<sub>o</sub> + (ξ - ξ<sub>o</sub>) / ξ<sub>1</sub></strong>
+                        <br><br>
+                        <span data-i18n="formulaWhere">Where:</span>
+                        <br>• μ = <span data-i18n="mixtureViscosity">mixture viscosity (cP)</span>
+                        <br>• μ<sub>o</sub> = <span data-i18n="atmosphericViscosity">atmospheric viscosity (cP)</span>
+                        <br>• ρ<sub>r</sub> = <span data-i18n="reducedDensity">reduced density (dimensionless)</span>
+                        <br>• ξ<sub>m</sub> = <span data-i18n="viscosityParameter">viscosity parameter related to
+                            molecular weight and critical properties</span>
+                    </div>
+                </div>
+
+                <form onsubmit="return false;">
+                    <div class="input-group">
+                        <label class="tooltip-trigger"
+                            data-tooltip="Atmospheric viscosity of the oil mixture">μ<sub>o</sub></label>
+                        <div class="input-with-unit">
+                            <input type="number" id="mu_o" step="any" placeholder="0.1 - 1000" min="0.01" max="50000"
+                                required>
+                            <select id="mu_o_unit" class="unit-select">
+                                <option value="cP">cP</option>
+                                <option value="Pas">Pa·s</option>
+                            </select>
+                        </div>
+                        <span class="input-hint">Range: 0.01 - 50,000 cP</span>
+                    </div>
+                    <div class="input-group">
+                        <label class="tooltip-trigger"
+                            data-tooltip="Reduced density (dimensionless ratio)">ρ<sub>r</sub> (dim)</label>
+                        <input type="number" id="rho_r" step="any" placeholder="0.5 - 2.5" min="0.01" max="3.5"
+                            required>
+                        <span class="input-hint">Range: 0.01 - 3.5</span>
+                    </div>
+                    <div class="input-group">
+                        <label class="tooltip-trigger"
+                            data-tooltip="Viscosity parameter from critical properties">ξ<sub>m</sub> (dim)</label>
+                        <input type="number" id="xi_m" step="any" placeholder="0.01 - 5" min="0.001" max="10" required>
+                        <span class="input-hint">Range: 0.001 - 10</span>
+                    </div>
+                    <div class="button-group">
+                        <button id="calculateBtn" class="primary-btn" data-i18n="calculateBtn">Calculate</button>
+                        <button type="button" class="reset-btn" data-i18n="resetBtn">Reset</button>
+                    </div>
+                </form>
+                <div id="resultContainer" class="result-container hidden">
+                    <div class="gauge-wrapper">
+                        <svg class="progress-ring" width="140" height="140">
+                            <circle class="progress-ring__circle-bg" stroke="rgba(255,255,255,0.1)" stroke-width="8"
+                                fill="transparent" r="60" cx="70" cy="70" />
+                            <circle class="progress-ring__circle" stroke="var(--accent-primary)" stroke-width="8"
+                                fill="transparent" r="60" cx="70" cy="70" />
+                        </svg>
+                        <div class="result-content">
+                            <h3 data-i18n="resultLabel">Result</h3>
+                            <div class="value-display"><span id="resultValue">0.0000</span> <span class="unit">cP</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Little-Kennedy Tab -->
+        <div id="lkTab" class="tab-content">
+            <div class="card">
+                <h2>Little-Kennedy (1968)</h2>
+
+                <div class="explanation-section">
+                    <h3 data-i18n="backgroundTitle">Background & Development</h3>
+                    <p data-i18n="lkBackground">The Little-Kennedy correlation was developed in 1968
+                        by J.E. Little and H.T. Kennedy Jr. at the University of Oklahoma. Their
+                        research focused on creating a more accurate method for predicting heavy
+                        oil viscosities, particularly for oils with high molecular weights and
+                        specific gravities found in many North American reservoirs.</p>
+
+                    <h3 data-i18n="howItWorksTitle">How It Works</h3>
+                    <p data-i18n="lkHowItWorks">This correlation uses a complex polynomial approach
+                        with temperature and pressure correction factors. It employs two sets of
+                        coefficients (A and B) that account for the compositional complexity of
+                        crude oils. The method is particularly effective for heavy crude oils
+                        and incorporates the effect of the C7+ fraction molecular weight and
+                        specific gravity.</p>
+
+                    <h3 data-i18n="formulaTitle">Correlation Formula</h3>
+                    <div class="formula-box">
+                        <strong>ln(μ) = Σ(A<sub>i</sub> × T<sup>i</sup>) + Σ(B<sub>i</sub> × P<sup>i</sup>)</strong>
+                        <br><br>
+                        <span data-i18n="formulaWhere">Where:</span>
+                        <br>• μ = <span data-i18n="oilViscosity">oil viscosity (cP)</span>
+                        <br>• T = <span data-i18n="temperature">temperature</span> (°R)
+                        <br>• P = <span data-i18n="pressure">pressure</span> (atm)
+                        <br>• A<sub>i</sub>, B<sub>i</sub> = <span data-i18n="empiricalCoeffs">empirical
+                            coefficients</span> (i = 0 to 11)
+                        <br>• M<sub>C7+</sub> = <span data-i18n="molWeightC7">molecular weight of C7+ fraction</span>
+                        <br>• γ<sub>C7+</sub> = <span data-i18n="specGravityC7">specific gravity of C7+ fraction</span>
+                    </div>
+                </div>
+
+                <form onsubmit="return false;">
+                    <div class="input-grid">
+                        <div class="input-group">
+                            <label>P</label>
+                            <div class="input-with-unit">
+                                <input type="number" id="lk_P" step="any" placeholder="35 - 680" min="1" max="1700"
+                                    required>
+                                <select id="lk_P_unit" class="unit-select">
+                                    <option value="atm">atm</option>
+                                    <option value="psia">psia</option>
+                                    <option value="bar">bar</option>
+                                    <option value="kPa">kPa</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>T</label>
+                            <div class="input-with-unit">
+                                <input type="number" id="lk_T" step="any" placeholder="560 - 860" min="492" max="960"
+                                    required>
+                                <select id="lk_T_unit" class="unit-select">
+                                    <option value="R">°R</option>
+                                    <option value="F">°F</option>
+                                    <option value="C">°C</option>
+                                    <option value="K">K</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="input-group"><label>M<sub>C7+</sub></label><input type="number" id="lk_Mc7"
+                                step="any" placeholder="100 - 400" min="16" max="800" required></div>
+                        <div class="input-group"><label>γ<sub>C7+</sub></label><input type="number" id="lk_gammaC7"
+                                step="any" placeholder="0.80 - 0.95" min="0.7" max="1.1" required></div>
+                        <div class="input-group"><label>M<sub>a</sub></label><input type="number" id="lk_Ma" step="any"
+                                placeholder="16 - 100" min="10" max="200" required></div>
+                    </div>
+                    <details class="coefficients-details">
+                        <summary data-i18n="coefficientsTitle">Coefficients A & B</summary>
+                        <div class="coeff-grid">
+                            <div class="coeff-column">
+                                <h4>A Coefficients</h4>
+                                <div class="input-row"><label>A0</label><input type="number" id="A0" step="any"
+                                        value="0"></div>
+                                <div class="input-row"><label>A1</label><input type="number" id="A1" step="any"
+                                        value="0"></div>
+                                <div class="input-row"><label>A2</label><input type="number" id="A2" step="any"
+                                        value="0"></div>
+                                <div class="input-row"><label>A3</label><input type="number" id="A3" step="any"
+                                        value="0"></div>
+                                <div class="input-row"><label>A4</label><input type="number" id="A4" step="any"
+                                        value="0"></div>
+                                <div class="input-row"><label>A5</label><input type="number" id="A5" step="any"
+                                        value="0"></div>
+                                <div class="input-row"><label>A6</label><input type="number" id="A6" step="any"
+                                        value="0"></div>
+                                <div class="input-row"><label>A7</label><input type="number" id="A7" step="any"
+                                        value="0"></div>
+                                <div class="input-row"><label>A8</label><input type="number" id="A8" step="any"
+                                        value="0"></div>
+                                <div class="input-row"><label>A9</label><input type="number" id="A9" step="any"
+                                        value="0"></div>
+                                <div class="input-row"><label>A10</label><input type="number" id="A10" step="any"
+                                        value="0"></div>
+                            </div>
+                            <div class="coeff-column">
+                                <h4>B Coefficients</h4>
+                                <div class="input-row"><label>B0</label><input type="number" id="B0" step="any"
+                                        value="0"></div>
+                                <div class="input-row"><label>B1</label><input type="number" id="B1" step="any"
+                                        value="0"></div>
+                                <div class="input-row"><label>B2</label><input type="number" id="B2" step="any"
+                                        value="0"></div>
+                                <div class="input-row"><label>B3</label><input type="number" id="B3" step="any"
+                                        value="0"></div>
+                                <div class="input-row"><label>B4</label><input type="number" id="B4" step="any"
+                                        value="0"></div>
+                                <div class="input-row"><label>B5</label><input type="number" id="B5" step="any"
+                                        value="0"></div>
+                                <div class="input-row"><label>B6</label><input type="number" id="B6" step="any"
+                                        value="0"></div>
+                                <div class="input-row"><label>B7</label><input type="number" id="B7" step="any"
+                                        value="0"></div>
+                                <div class="input-row"><label>B8</label><input type="number" id="B8" step="any"
+                                        value="0"></div>
+                                <div class="input-row"><label>B9</label><input type="number" id="B9" step="any"
+                                        value="0"></div>
+                                <div class="input-row"><label>B10</label><input type="number" id="B10" step="any"
+                                        value="0"></div>
+                                <div class="input-row"><label>B11</label><input type="number" id="B11" step="any"
+                                        value="0"></div>
+                            </div>
+                        </div>
+                    </details>
+                    <div class="button-group">
+                        <button id="calculateLkBtn" class="primary-btn" data-i18n="calculateBtn">Calculate</button>
+                        <button type="button" class="reset-btn" data-i18n="resetBtn">Reset</button>
+                    </div>
+                </form>
+                <div id="lkResultContainer" class="result-container hidden">
+                    <div class="gauge-wrapper">
+                        <svg class="progress-ring" width="140" height="140">
+                            <circle class="progress-ring__circle-bg" stroke="rgba(255,255,255,0.1)" stroke-width="8"
+                                fill="transparent" r="60" cx="70" cy="70" />
+                            <circle class="progress-ring__circle" stroke="var(--accent-primary)" stroke-width="8"
+                                fill="transparent" r="60" cx="70" cy="70" />
+                        </svg>
+                        <div class="result-content">
+                            <h3 data-i18n="resultLabel">Result</h3>
+                            <div class="value-display"><span id="lkResultValue">0.0000</span> <span
+                                    class="unit">cP</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Beal Tab -->
+        <div id="bealTab" class="tab-content">
+            <div class="card">
+                <h2>Beal (1946) - Dead Oil</h2>
+
+                <div class="explanation-section">
+                    <h3 data-i18n="backgroundTitle">Background & Development</h3>
+                    <p data-i18n="bealBackground">Carlton Beal developed this correlation in 1946,
+                        making it one of the earliest empirical correlations for crude oil
+                        viscosity. Beal's work was based on extensive laboratory measurements of
+                        dead oil samples (oil with no dissolved gas) from various California oil
+                        fields. His correlation became a foundation for later viscosity
+                        prediction methods.</p>
+
+                    <h3 data-i18n="howItWorksTitle">How It Works</h3>
+                    <p data-i18n="bealHowItWorks">The Beal correlation uses a simple exponential
+                        relationship between API gravity and temperature to estimate dead oil
+                        viscosity. It's specifically designed for oils at atmospheric pressure
+                        with no dissolved gas. The method works best for medium to light crude
+                        oils with API gravities between 10° and 40°.</p>
+
+                    <h3 data-i18n="formulaTitle">Correlation Formula</h3>
+                    <div class="formula-box">
+                        <strong>μ<sub>od</sub> = (0.32 + 1.8 × 10<sup>7</sup> / API<sup>4.53</sup>) × (360 / (T +
+                            200))<sup>a</sup></strong>
+                        <br><br>
+                        <strong>a = 10<sup>(0.43 + 8.33/API)</sup></strong>
+                        <br><br>
+                        <span data-i18n="formulaWhere">Where:</span>
+                        <br>• μ<sub>od</sub> = <span data-i18n="deadOilViscosity">dead oil viscosity (cP)</span>
+                        <br>• API = <span data-i18n="apiGravity">API gravity (degrees)</span>
+                        <br>• T = <span data-i18n="temperature">temperature</span> (°F)
+                    </div>
+                </div>
+
+                <form onsubmit="return false;">
+                    <div class="input-group">
+                        <label>API Gravity</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="beal_api" step="any" placeholder="15 - 45" min="5" max="60">
+                            <select id="beal_api_unit" class="unit-select">
+                                <option value="API">°API</option>
+                                <option value="SG">SG</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>Temperature</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="beal_temp" step="any" placeholder="100 - 400" min="32" max="500">
+                            <select id="beal_temp_unit" class="unit-select">
+                                <option value="F">°F</option>
+                                <option value="C">°C</option>
+                                <option value="K">K</option>
+                                <option value="R">°R</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="button-group">
+                        <button id="calculateBealBtn" class="primary-btn" data-i18n="calculateBtn">Calculate</button>
+                        <button type="button" class="reset-btn" data-i18n="resetBtn">Reset</button>
+                    </div>
+                </form>
+                <div id="bealResultContainer" class="result-container hidden">
+                    <div class="gauge-wrapper">
+                        <svg class="progress-ring" width="140" height="140">
+                            <circle class="progress-ring__circle-bg" stroke="rgba(255,255,255,0.1)" stroke-width="8"
+                                fill="transparent" r="60" cx="70" cy="70" />
+                            <circle class="progress-ring__circle" stroke="var(--accent-primary)" stroke-width="8"
+                                fill="transparent" r="60" cx="70" cy="70" />
+                        </svg>
+                        <div class="result-content">
+                            <h3 data-i18n="resultLabel">Result</h3>
+                            <div class="value-display"><span id="bealResultValue">0.0000</span> <span
+                                    class="unit">cP</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Beggs-Robinson Tab -->
+        <div id="beggsTab" class="tab-content">
+            <div class="card">
+                <h2>Beggs-Robinson (1975)</h2>
+
+                <div class="explanation-section">
+                    <h3 data-i18n="backgroundTitle">Background & Development</h3>
+                    <p data-i18n="beggsBackground">H. Dale Beggs and J.R. Robinson published this
+                        correlation in 1975 in the <em>Journal of Petroleum Technology</em>.
+                        Their work was based on a comprehensive study of 2,073 data points from
+                        crude oils worldwide. The correlation was developed to predict both dead
+                        oil and saturated oil viscosities with improved accuracy over earlier
+                        methods.</p>
+
+                    <h3 data-i18n="howItWorksTitle">How It Works</h3>
+                    <p data-i18n="beggsHowItWorks">The Beggs-Robinson correlation uses a two-step
+                        approach: first calculating dead oil viscosity, then applying a
+                        correction factor for dissolved gas (if Rs is provided). The method
+                        incorporates API gravity and temperature in an exponential relationship.
+                        It's widely used in reservoir simulation and production engineering due
+                        to its simplicity and reasonable accuracy.</p>
+
+                    <h3 data-i18n="formulaTitle">Correlation Formula</h3>
+                    <div class="formula-box">
+                        <strong data-i18n="deadOil">Dead Oil:</strong>
+                        <br>μ<sub>od</sub> = 10<sup>x</sup> - 1, where x = y × T<sup>-1.163</sup>
+                        <br>y = 10<sup>z</sup>, where z = 3.0324 - 0.02023 × API
+                        <br><br>
+                        <strong data-i18n="liveOil">Live Oil (if Rs provided):</strong>
+                        <br>μ<sub>o</sub> = A × μ<sub>od</sub><sup>B</sup>
+                        <br>A = 10.715 × (Rs + 100)<sup>-0.515</sup>
+                        <br>B = 5.44 × (Rs + 150)<sup>-0.338</sup>
+                        <br><br>
+                        <span data-i18n="formulaWhere">Where:</span>
+                        <br>• μ<sub>od</sub> = <span data-i18n="deadOilViscosity">dead oil viscosity (cP)</span>
+                        <br>• μ<sub>o</sub> = <span data-i18n="satOilViscosity">saturated oil viscosity (cP)</span>
+                        <br>• API = <span data-i18n="apiGravity">API gravity (degrees)</span>
+                        <br>• T = <span data-i18n="temperature">temperature</span> (°F)
+                        <br>• Rs = <span data-i18n="solutionGas">solution gas-oil ratio (scf/STB)</span>
+                    </div>
+                </div>
+
+                <form onsubmit="return false;">
+                    <div class="input-group">
+                        <label>API Gravity</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="beggs_api" step="any" placeholder="15 - 45" min="5" max="60">
+                            <select id="beggs_api_unit" class="unit-select">
+                                <option value="API">°API</option>
+                                <option value="SG">SG</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>Temperature</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="beggs_temp" step="any" placeholder="100 - 400" min="32" max="500">
+                            <select id="beggs_temp_unit" class="unit-select">
+                                <option value="F">°F</option>
+                                <option value="C">°C</option>
+                                <option value="K">K</option>
+                                <option value="R">°R</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>Rs - Optional</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="beggs_rs" step="any" placeholder="100 - 2000" min="0" max="5000">
+                            <select id="beggs_rs_unit" class="unit-select">
+                                <option value="scf/STB">scf/STB</option>
+                                <option value="m3/m3">m³/m³</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="button-group">
+                        <button id="calculateBeggsBtn" class="primary-btn" data-i18n="calculateBtn">Calculate</button>
+                        <button type="button" class="reset-btn" data-i18n="resetBtn">Reset</button>
+                    </div>
+                </form>
+                <div id="beggsResultContainer" class="result-container hidden">
+                    <div class="gauge-wrapper">
+                        <svg class="progress-ring" width="140" height="140">
+                            <circle class="progress-ring__circle-bg" stroke="rgba(255,255,255,0.1)" stroke-width="8"
+                                fill="transparent" r="60" cx="70" cy="70" />
+                            <circle class="progress-ring__circle" stroke="var(--accent-primary)" stroke-width="8"
+                                fill="transparent" r="60" cx="70" cy="70" />
+                        </svg>
+                        <div class="result-content">
+                            <h3 data-i18n="resultLabel">Result</h3>
+                            <div class="value-display"><span id="beggsResultValue">0.0000</span> <span
+                                    class="unit">cP</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Glaso Tab -->
+        <div id="glasoTab" class="tab-content">
+            <div class="card">
+                <h2>Glaso (1980)</h2>
+
+                <div class="explanation-section">
+                    <h3 data-i18n="backgroundTitle">Background & Development</h3>
+                    <p data-i18n="glasoBackground">Øivind Glasø developed this correlation in 1980
+                        based on data from North Sea crude oils. Published in the <em>Journal of
+                            Petroleum Technology</em>, Glasø's work aimed to improve
+                        viscosity predictions for the specific characteristics of North Sea
+                        oils, which often differ from oils in other regions. The correlation has
+                        since been widely adopted internationally.</p>
+
+                    <h3 data-i18n="howItWorksTitle">How It Works</h3>
+                    <p data-i18n="glasoHowItWorks">The Glasø correlation uses logarithmic
+                        relationships between API gravity, temperature, and solution gas-oil
+                        ratio. It first calculates dead oil viscosity using API and temperature,
+                        then applies a correction for dissolved gas effects. The method is
+                        particularly accurate for oils with API gravities between 20° and 48°
+                        and temperatures between 50°F and 300°F.</p>
+
+                    <h3 data-i18n="formulaTitle">Correlation Formula</h3>
+                    <div class="formula-box">
+                        <strong data-i18n="deadOil">Dead Oil:</strong>
+                        <br>log(log(μ<sub>od</sub> + 1)) = A - B × log(T - 460)
+                        <br>A = 3.141 × 10<sup>10</sup> × (T - 460)<sup>-3.444</sup> × log(API)<sup>a</sup>
+                        <br>a = 10.313 × log(T - 460) - 36.447
+                        <br><br>
+                        <strong data-i18n="liveOil">Live Oil (if Rs provided):</strong>
+                        <br>μ<sub>o</sub> = μ<sub>od</sub> × (Rs + 1)<sup>-0.25</sup> × 10<sup>b</sup>
+                        <br>b = -0.00081 × Rs - 0.000845 × (API - 35)
+                        <br><br>
+                        <span data-i18n="formulaWhere">Where:</span>
+                        <br>• μ<sub>od</sub> = <span data-i18n="deadOilViscosity">dead oil viscosity (cP)</span>
+                        <br>• μ<sub>o</sub> = <span data-i18n="satOilViscosity">saturated oil viscosity (cP)</span>
+                        <br>• API = <span data-i18n="apiGravity">API gravity (degrees)</span>
+                        <br>• T = <span data-i18n="temperature">temperature</span> (°F)
+                        <br>• Rs = <span data-i18n="solutionGas">solution gas-oil ratio (scf/STB)</span>
+                    </div>
+                </div>
+
+                <form onsubmit="return false;">
+                    <div class="input-group">
+                        <label>API Gravity</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="glaso_api" step="any" placeholder="20 - 48" min="5" max="60">
+                            <select id="glaso_api_unit" class="unit-select">
+                                <option value="API">°API</option>
+                                <option value="SG">SG</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>Temperature</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="glaso_temp" step="any" placeholder="50 - 300" min="32" max="500">
+                            <select id="glaso_temp_unit" class="unit-select">
+                                <option value="F">°F</option>
+                                <option value="C">°C</option>
+                                <option value="K">K</option>
+                                <option value="R">°R</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>Rs - Optional</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="glaso_rs" step="any" placeholder="100 - 2000" min="0" max="5000">
+                            <select id="glaso_rs_unit" class="unit-select">
+                                <option value="scf/STB">scf/STB</option>
+                                <option value="m3/m3">m³/m³</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="button-group">
+                        <button id="calculateGlasoBtn" class="primary-btn" data-i18n="calculateBtn">Calculate</button>
+                        <button type="button" class="reset-btn" data-i18n="resetBtn">Reset</button>
+                    </div>
+                </form>
+                <div id="glasoResultContainer" class="result-container hidden">
+                    <div class="gauge-wrapper">
+                        <svg class="progress-ring" width="140" height="140">
+                            <circle class="progress-ring__circle-bg" stroke="rgba(255,255,255,0.1)" stroke-width="8"
+                                fill="transparent" r="60" cx="70" cy="70" />
+                            <circle class="progress-ring__circle" stroke="var(--accent-primary)" stroke-width="8"
+                                fill="transparent" r="60" cx="70" cy="70" />
+                        </svg>
+                        <div class="result-content">
+                            <h3 data-i18n="resultLabel">Result</h3>
+                            <div class="value-display"><span id="glasoResultValue">0.0000</span> <span
+                                    class="unit">cP</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chew-Connally Tab -->
+        <div id="chewTab" class="tab-content">
+            <div class="card">
+                <h2>Chew-Connally (1959)</h2>
+
+                <div class="explanation-section">
+                    <h3 data-i18n="backgroundTitle">Background & Development</h3>
+                    <p data-i18n="chewBackground">J. Chew and C.A. Connally Jr. developed this
+                        correlation in 1959 while working at Shell Development Company. Their
+                        research focused on understanding how dissolved gas affects oil
+                        viscosity. The correlation was one of the first to systematically
+                        quantify the viscosity reduction effect of solution gas, which is
+                        critical for reservoir engineering calculations.</p>
+
+                    <h3 data-i18n="howItWorksTitle">How It Works</h3>
+                    <p data-i18n="chewHowItWorks">The Chew-Connally method uses a viscosity ratio
+                        approach, relating saturated oil viscosity to dead oil viscosity through
+                        the solution gas-oil ratio. The correlation applies a reduction factor
+                        based on Rs, acknowledging that dissolved gas significantly decreases
+                        oil viscosity. This method is particularly useful when dead oil
+                        viscosity is already known or can be estimated.</p>
+
+                    <h3 data-i18n="formulaTitle">Correlation Formula</h3>
+                    <div class="formula-box">
+                        <strong>μ<sub>o</sub> = A × μ<sub>od</sub><sup>B</sup></strong>
+                        <br><br>
+                        <strong>A = Rs<sup>a</sup></strong>
+                        <br>a = -1.0146 + 0.5 × log(μ<sub>od</sub>)
+                        <br><br>
+                        <strong>B = 0.5 - 0.2 × log(Rs)</strong>
+                        <br><br>
+                        <span data-i18n="formulaWhere">Where:</span>
+                        <br>• μ<sub>o</sub> = <span data-i18n="satOilViscosity">saturated oil viscosity (cP)</span>
+                        <br>• μ<sub>od</sub> = <span data-i18n="deadOilViscosity">dead oil viscosity (cP)</span>
+                        <br>• Rs = <span data-i18n="solutionGas">solution gas-oil ratio (scf/STB)</span>
+                        <br><br>
+                        <em data-i18n="chewNote">Note: If dead oil viscosity is not provided, it will be estimated using
+                            Beal's correlation with the provided API and temperature.</em>
+                    </div>
+                </div>
+
+                <form onsubmit="return false;">
+                    <div class="input-group">
+                        <label>Dead Oil μ - Optional</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="chew_muOd" step="any" placeholder="0.1 - 1000" min="0.01"
+                                max="50000">
+                            <select id="chew_muOd_unit" class="unit-select">
+                                <option value="cP">cP</option>
+                                <option value="Pas">Pa·s</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>Rs</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="chew_rs" step="any" placeholder="100 - 2000" min="0" max="5000">
+                            <select id="chew_rs_unit" class="unit-select">
+                                <option value="scf/STB">scf/STB</option>
+                                <option value="m3/m3">m³/m³</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>API (for estimation)</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="chew_api" step="any" placeholder="15 - 45" min="5" max="60">
+                            <select id="chew_api_unit" class="unit-select">
+                                <option value="API">°API</option>
+                                <option value="SG">SG</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>Temp (for estimation)</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="chew_temp" step="any" placeholder="100 - 400" min="32" max="500">
+                            <select id="chew_temp_unit" class="unit-select">
+                                <option value="F">°F</option>
+                                <option value="C">°C</option>
+                                <option value="K">K</option>
+                                <option value="R">°R</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="button-group">
+                        <button id="calculateChewBtn" class="primary-btn" data-i18n="calculateBtn">Calculate</button>
+                        <button type="button" class="reset-btn" data-i18n="resetBtn">Reset</button>
+                    </div>
+                </form>
+                <div id="chewResultContainer" class="result-container hidden">
+                    <div class="gauge-wrapper">
+                        <svg class="progress-ring" width="140" height="140">
+                            <circle class="progress-ring__circle-bg" stroke="rgba(255,255,255,0.1)" stroke-width="8"
+                                fill="transparent" r="60" cx="70" cy="70" />
+                            <circle class="progress-ring__circle" stroke="var(--accent-primary)" stroke-width="8"
+                                fill="transparent" r="60" cx="70" cy="70" />
+                        </svg>
+                        <div class="result-content">
+                            <h3 data-i18n="resultLabel">Result</h3>
+                            <div class="value-display"><span id="chewResultValue">0.0000</span> <span
+                                    class="unit">cP</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vazquez-Beggs Tab -->
+        <div id="vazquezTab" class="tab-content">
+            <div class="card">
+                <h2>Vazquez-Beggs (1980) - Undersaturated</h2>
+
+                <div class="explanation-section">
+                    <h3 data-i18n="backgroundTitle">Background & Development</h3>
+                    <p data-i18n="vazquezBackground">M.E. Vazquez and H.D. Beggs developed this
+                        correlation in 1980, building upon earlier work by Beggs and Robinson.
+                        The correlation was specifically designed to handle undersaturated oil
+                        conditions (pressure above bubble point), which earlier correlations
+                        often struggled with. Their work was published in the <em>Journal of
+                            Petroleum Engineering</em> and has become a standard for
+                        undersaturated oil viscosity predictions.</p>
+
+                    <h3 data-i18n="howItWorksTitle">How It Works</h3>
+                    <p data-i18n="vazquezHowItWorks">The Vazquez-Beggs correlation uses a
+                        pressure-dependent exponential relationship for undersaturated oils. It
+                        requires viscosity at bubble point pressure (which can be estimated if
+                        not known) and applies a compression factor based on how far above
+                        bubble point the system pressure is. The method accounts for the fact
+                        that oil viscosity increases with pressure in undersaturated conditions.</p>
+
+                    <h3 data-i18n="formulaTitle">Correlation Formula</h3>
+                    <div class="formula-box">
+                        <strong>μ<sub>o</sub> = μ<sub>ob</sub> × (P / P<sub>b</sub>)<sup>m</sup></strong>
+                        <br><br>
+                        <strong>m = 2.6 × P<sup>1.187</sup> × exp(-11.513 - 0.00898 × API)</strong>
+                        <br><br>
+                        <span data-i18n="formulaWhere">Where:</span>
+                        <br>• μ<sub>o</sub> = <span data-i18n="oilViscosityP">oil viscosity at pressure P (cP)</span>
+                        <br>• μ<sub>ob</sub> = <span data-i18n="oilViscosityPb">oil viscosity at bubble point pressure
+                            (cP)</span>
+                        <br>• P = <span data-i18n="systemPressure">system pressure (psia)</span>
+                        <br>• P<sub>b</sub> = <span data-i18n="bubblePointPressure">bubble point pressure (psia)</span>
+                        <br>• API = <span data-i18n="apiGravity">API gravity (degrees)</span>
+                        <br>• Rs = <span data-i18n="solutionGas">solution gas-oil ratio (scf/STB)</span>
+                        <br>• γ<sub>g</sub> = <span data-i18n="gasSpecificGravity">gas specific gravity</span>
+                        <br><br>
+                        <em data-i18n="vazquezNote">Note: If μ<sub>ob</sub> is not provided, it will be estimated using
+                            Beggs-Robinson correlation at saturated conditions.</em>
+                    </div>
+                </div>
+
+                <form onsubmit="return false;">
+                    <div class="input-group">
+                        <label>Pressure</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="vazquez_p" step="any" placeholder="500 - 10000" min="14.7"
+                                max="25000">
+                            <select id="vazquez_p_unit" class="unit-select">
+                                <option value="psia">psia</option>
+                                <option value="bar">bar</option>
+                                <option value="kPa">kPa</option>
+                                <option value="atm">atm</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>Pb - Optional</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="vazquez_pb" step="any" placeholder="500 - 5000" min="100"
+                                max="10000">
+                            <select id="vazquez_pb_unit" class="unit-select">
+                                <option value="psia">psia</option>
+                                <option value="bar">bar</option>
+                                <option value="kPa">kPa</option>
+                                <option value="atm">atm</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>μ at Pb - Optional</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="vazquez_muOb" step="any" placeholder="0.1 - 100" min="0.01"
+                                max="50000">
+                            <select id="vazquez_muOb_unit" class="unit-select">
+                                <option value="cP">cP</option>
+                                <option value="Pas">Pa·s</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>API (for estimation)</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="vazquez_api" step="any" placeholder="15 - 45" min="5" max="60">
+                            <select id="vazquez_api_unit" class="unit-select">
+                                <option value="API">°API</option>
+                                <option value="SG">SG</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>Temp (for estimation)</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="vazquez_temp" step="any" placeholder="200">
+                            <select id="vazquez_temp_unit" class="unit-select">
+                                <option value="F">°F</option>
+                                <option value="C">°C</option>
+                                <option value="K">K</option>
+                                <option value="R">°R</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-group"><label>Rs (for estimation)</label><input type="number" id="vazquez_rs"
+                            step="any" placeholder="500"></div>
+                    <div class="input-group"><label>γg (for estimation)</label><input type="number" id="vazquez_yg"
+                            step="any" placeholder="0.7"></div>
+                    <div class="button-group">
+                        <button id="calculateVazquezBtn" class="primary-btn" data-i18n="calculateBtn">Calculate</button>
+                        <button type="button" class="reset-btn" data-i18n="resetBtn">Reset</button>
+                    </div>
+                </form>
+                <div id="vazquezResultContainer" class="result-container hidden">
+                    <div class="gauge-wrapper">
+                        <svg class="progress-ring" width="140" height="140">
+                            <circle class="progress-ring__circle-bg" stroke="rgba(255,255,255,0.1)" stroke-width="8"
+                                fill="transparent" r="60" cx="70" cy="70" />
+                            <circle class="progress-ring__circle" stroke="var(--accent-primary)" stroke-width="8"
+                                fill="transparent" r="60" cx="70" cy="70" />
+                        </svg>
+                        <div class="result-content">
+                            <h3 data-i18n="resultLabel">Result</h3>
+                            <div class="value-display"><span id="vazquezResultValue">0.0000</span> <span
+                                    class="unit">cP</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="input-group">
+                <label>Temp (for estimation)</label>
+                <div class="input-with-unit">
+                    <input type="number" id="chew_temp" step="any" placeholder="100 - 400" min="32" max="500">
+                    <select id="chew_temp_unit" class="unit-select">
+                        <option value="F">°F</option>
+                        <option value="C">°C</option>
+                        <option value="K">K</option>
+                        <option value="R">°R</option>
+                    </select>
+                </div>
+            </div>
+            <div class="button-group">
+                <button id="calculateChewBtn" class="primary-btn" data-i18n="calculateBtn">Calculate</button>
+                <button type="button" class="reset-btn" data-i18n="resetBtn">Reset</button>
+            </div>
+            </form>
+            <div id="chewResultContainer" class="result-container hidden">
+                <div class="gauge-wrapper">
+                    <svg class="progress-ring" width="140" height="140">
+                        <circle class="progress-ring__circle-bg" stroke="rgba(255,255,255,0.1)" stroke-width="8"
+                            fill="transparent" r="60" cx="70" cy="70" />
+                        <circle class="progress-ring__circle" stroke="var(--accent-primary)" stroke-width="8"
+                            fill="transparent" r="60" cx="70" cy="70" />
+                    </svg>
+                    <div class="result-content">
+                        <h3 data-i18n="resultLabel">Result</h3>
+                        <div class="value-display"><span id="chewResultValue">0.0000</span> <span class="unit">cP</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <!-- Vazquez-Beggs Tab -->
+        <div id="vazquezTab" class="tab-content">
+            <div class="card">
+                <h2>Vazquez-Beggs (1980) - Undersaturated</h2>
+
+                <div class="explanation-section">
+                    <h3 data-i18n="backgroundTitle">Background & Development</h3>
+                    <p data-i18n="vazquezBackground">M.E. Vazquez and H.D. Beggs developed this
+                        correlation in 1980, building upon earlier work by Beggs and Robinson.
+                        The correlation was specifically designed to handle undersaturated oil
+                        conditions (pressure above bubble point), which earlier correlations
+                        often struggled with. Their work was published in the <em>Journal of
+                            Petroleum Engineering</em> and has become a standard for
+                        undersaturated oil viscosity predictions.</p>
+
+                    <h3 data-i18n="howItWorksTitle">How It Works</h3>
+                    <p data-i18n="vazquezHowItWorks">The Vazquez-Beggs correlation uses a
+                        pressure-dependent exponential relationship for undersaturated oils. It
+                        requires viscosity at bubble point pressure (which can be estimated if
+                        not known) and applies a compression factor based on how far above
+                        bubble point the system pressure is. The method accounts for the fact
+                        that oil viscosity increases with pressure in undersaturated conditions.</p>
+
+                    <h3 data-i18n="formulaTitle">Correlation Formula</h3>
+                    <div class="formula-box">
+                        <strong>μ<sub>o</sub> = μ<sub>ob</sub> × (P / P<sub>b</sub>)<sup>m</sup></strong>
+                        <br><br>
+                        <strong>m = 2.6 × P<sup>1.187</sup> × exp(-11.513 - 0.00898 × API)</strong>
+                        <br><br>
+                        <span data-i18n="formulaWhere">Where:</span>
+                        <br>• μ<sub>o</sub> = <span data-i18n="oilViscosityP">oil viscosity at pressure P (cP)</span>
+                        <br>• μ<sub>ob</sub> = <span data-i18n="oilViscosityPb">oil viscosity at bubble point pressure
+                            (cP)</span>
+                        <br>• P = <span data-i18n="systemPressure">system pressure (psia)</span>
+                        <br>• P<sub>b</sub> = <span data-i18n="bubblePointPressure">bubble point pressure (psia)</span>
+                        <br>• API = <span data-i18n="apiGravity">API gravity (degrees)</span>
+                        <br>• Rs = <span data-i18n="solutionGas">solution gas-oil ratio (scf/STB)</span>
+                        <br>• γ<sub>g</sub> = <span data-i18n="gasSpecificGravity">gas specific gravity</span>
+                        <br><br>
+                        <em data-i18n="vazquezNote">Note: If μ<sub>ob</sub> is not provided, it will be estimated using
+                            Beggs-Robinson correlation at saturated conditions.</em>
+                    </div>
+                </div>
+
+                <form onsubmit="return false;">
+                    <div class="input-group">
+                        <label>Pressure</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="vazquez_p" step="any" placeholder="500 - 10000" min="14.7"
+                                max="25000">
+                            <select id="vazquez_p_unit" class="unit-select">
+                                <option value="psia">psia</option>
+                                <option value="bar">bar</option>
+                                <option value="kPa">kPa</option>
+                                <option value="atm">atm</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>Pb - Optional</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="vazquez_pb" step="any" placeholder="500 - 5000" min="100"
+                                max="10000">
+                            <select id="vazquez_pb_unit" class="unit-select">
+                                <option value="psia">psia</option>
+                                <option value="bar">bar</option>
+                                <option value="kPa">kPa</option>
+                                <option value="atm">atm</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>μ at Pb - Optional</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="vazquez_muOb" step="any" placeholder="0.1 - 100" min="0.01"
+                                max="50000">
+                            <select id="vazquez_muOb_unit" class="unit-select">
+                                <option value="cP">cP</option>
+                                <option value="Pas">Pa·s</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>API (for estimation)</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="vazquez_api" step="any" placeholder="15 - 45" min="5" max="60">
+                            <select id="vazquez_api_unit" class="unit-select">
+                                <option value="API">°API</option>
+                                <option value="SG">SG</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>Temp (for estimation)</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="vazquez_temp" step="any" placeholder="200">
+                            <select id="vazquez_temp_unit" class="unit-select">
+                                <option value="F">°F</option>
+                                <option value="C">°C</option>
+                                <option value="K">K</option>
+                                <option value="R">°R</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-group"><label>Rs (for estimation)</label><input type="number" id="vazquez_rs"
+                            step="any" placeholder="500"></div>
+                    <div class="input-group"><label>γg (for estimation)</label><input type="number" id="vazquez_yg"
+                            step="any" placeholder="0.7"></div>
+                    <div class="button-group">
+                        <button id="calculateVazquezBtn" class="primary-btn" data-i18n="calculateBtn">Calculate</button>
+                        <button type="button" class="reset-btn" data-i18n="resetBtn">Reset</button>
+                    </div>
+                </form>
+                <div id="vazquezResultContainer" class="result-container hidden">
+                    <div class="gauge-wrapper">
+                        <svg class="progress-ring" width="140" height="140">
+                            <circle class="progress-ring__circle-bg" stroke="rgba(255,255,255,0.1)" stroke-width="8"
+                                fill="transparent" r="60" cx="70" cy="70" />
+                            <circle class="progress-ring__circle" stroke="var(--accent-primary)" stroke-width="8"
+                                fill="transparent" r="60" cx="70" cy="70" />
+                        </svg>
+                        <div class="result-content">
+                            <h3 data-i18n="resultLabel">Result</h3>
+                            <div class="value-display"><span id="vazquezResultValue">0.0000</span> <span
+                                    class="unit">cP</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Compare Tab -->
+        <div id="compareTab" class="tab-content">
+            <div class="card">
+                <h2>Compare Correlations</h2>
+                <p>Run multiple correlations simultaneously to identify the most accurate model for your fluid.</p>
+
+                <div class="input-group">
+                    <label>Temperature <span class="input-hint">60 - 350 °F</span></label>
+                    <div class="input-wrapper">
+                        <input type="number" id="compare_temp" placeholder="e.g. 200" min="60" max="350">
+                        <select id="compare_temp_unit">
+                            <option value="f">°F</option>
+                            <option value="c">°C</option>
+                            <option value="k">K</option>
+                            <option value="r">°R</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Pressure <span class="input-hint">14.7 - 10000 psia</span></label>
+                    <div class="input-wrapper">
+                        <input type="number" id="compare_pres" placeholder="e.g. 2500" min="14.7" max="10000">
+                        <select id="compare_pres_unit">
+                            <option value="psia">psia</option>
+                            <option value="psig">psig</option>
+                            <option value="bar">bar</option>
+                            <option value="atm">atm</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Oil Gravity <span class="input-hint">10 - 60 °API</span></label>
+                    <div class="input-wrapper">
+                        <input type="number" id="compare_api" placeholder="e.g. 35" min="10" max="60">
+                        <select id="compare_api_unit">
+                            <option value="api">°API</option>
+                            <option value="sg">SG</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Gas Specific Gravity <span class="input-hint">0.5 - 1.5</span></label>
+                    <div class="input-wrapper">
+                        <input type="number" id="compare_sg_gas" placeholder="e.g. 0.7" min="0.5" max="1.5" step="0.01">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Solution GOR (Rs) <span class="input-hint">0 - 2000 scf/stb</span></label>
+                    <div class="input-wrapper">
+                        <input type="number" id="compare_rs" placeholder="e.g. 500" min="0" max="2000">
+                        <select id="compare_rs_unit">
+                            <option value="scf">scf/stb</option>
+                            <option value="m3">m³/m³</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="btn-group">
+                    <button class="primary-btn" onclick="runComparison()">
+                        <span>📊 Compare All</span>
+                    </button>
+                    <button class="reset-btn" onclick="resetForm('compareTab')">
+                        <span>🔄 Reset</span>
+                    </button>
+                </div>
+
+                <!-- Recommendation Card -->
+                <div id="recommendationCard" class="recommendation-card hidden">
+                    <h3>💡 Recommendation</h3>
+                    <p id="recommendationText">Based on your inputs (API 35), we recommend...</p>
+                </div>
+
+                <!-- Comparison Results Table -->
+                <div id="compareResults" class="result-container hidden">
+                    <h3>Comparison Results</h3>
+                    <div class="table-responsive">
+                        <table class="compare-table">
+                            <thead>
+                                <tr>
+                                    <th>Correlation</th>
+                                    <th>Dead Oil (cp)</th>
+                                    <th>Saturated (cp)</th>
+                                    <th>Undersaturated (cp)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="compareTableBody">
+                                <!-- Populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </main>
+
+    <footer>
+        <p data-i18n="footerText">Oil Viscosity Calculators - Thermodynamics Course</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

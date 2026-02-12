@@ -1,0 +1,36 @@
+{
+    "name": "oil-viscosity-calculator-space",
+    "version": "1.0.0",
+    "description": "Advanced Oil Viscosity Calculator - Space Theme Edition",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron .",
+        "dist": "electron-builder -w"
+    },
+    "author": "Amine",
+    "license": "ISC",
+    "devDependencies": {
+        "electron": "^28.0.0",
+        "electron-builder": "^24.9.1",
+        "electron-packager": "^17.1.2"
+    },
+    "build": {
+        "appId": "com.amine.oilviscosityspace",
+        "win": {
+            "target": "nsis",
+            "icon": "icon.ico"
+        },
+        "nsis": {
+            "oneClick": false,
+            "allowToChangeInstallationDirectory": true
+        },
+        "files": [
+            "**/*",
+            "!node_modules/*/.cache",
+            "!**/*.py",
+            "!**/*.md",
+            "!**/*.docx",
+            "!**/*.pptx"
+        ]
+    }
+}
